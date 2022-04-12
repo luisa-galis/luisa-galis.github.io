@@ -23,6 +23,17 @@
                 function handleOrientationChange(mql) 
                 {
                     orientationPar.innerText  = (mql.matches) ? "Portrait": "Landscape";
+                    /* if (mediaQueryList.matches)
+                    {
+                        // The viewport is currently in portrait orientation
+                        orientationPar.innerText = "Portrait";
+                    } 
+                    else 
+                    {
+                        // The viewport is not currently in portrait orientation, 
+                        // therefore landscape
+                        orientationPar.innerText = "Landscape";
+                    } */
                 }
 
                 // Run the orientation change handler once.
