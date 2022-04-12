@@ -17,12 +17,12 @@
                 // Create the query list.
                 const mediaQueryList = window.matchMedia("(orientation: portrait)");
 
-                var orientationPar = document.getElementById("orientation-paragraph");
+                let orientationPar = document.getElementById("orientation-paragraph");
 
                 // Define a callback function for the event listener.
                 function handleOrientationChange(mql) 
                 {
-                    orientationPar.innerText  = (mediaQueryList.matches) ? "Portrait": "Landscape";
+                    orientationPar.innerText  = (mql.matches) ? "Portrait": "Landscape";
                     /* if (mediaQueryList.matches)
                     {
                         // The viewport is currently in portrait orientation

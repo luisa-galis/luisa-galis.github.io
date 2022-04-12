@@ -8,10 +8,23 @@
     <body>
         <h1>Orientation Button Click</h1>
         <p id="orientation-paragraph" class="mode">
-            Mao Micio
+            Mao Micio!
         </p>
 
-        <button onclick="onClickButton(window.event)">
+        <!--
+            window.event is DEPRECATED
+            see: https://developer.mozilla.org/en-US/docs/Web/API/Window/event#browser_compatibility
+            
+            Alternatively, use the arguments object of the function to access to the fist
+            argument used to call the function referenced by the onclick attribuite
+            see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments?retiredLocale=it
+
+            <button onclick="onClickButton(windows.event)">
+                Portrait (Lu)
+            </button>
+        -->
+
+        <button onclick="let event = arguments[0]; onClickButton(event);">
             Portrait (Lu)
         </button>
 
@@ -20,7 +33,7 @@
         </button>
 
         <div>
-            <button onclick="onClick_PortraintButton(window.event)">
+            <button onclick="onClick_PortraintButton(arguments[0])">
                 Portrait (ALP)
             </button>
 
@@ -32,38 +45,38 @@
         <script>
             function main ()
             {
-                var landscapeBtn= document.getElementById("landscapeButton");
+                let landscapeBtn= document.getElementById("landscapeButton");
                 landscapeBtn.addEventListener("click", onClickButton);
 
                 // ==============================================================
-                var landscapeBtnALP = document.getElementById("landscapeButtonALP");
+                let landscapeBtnALP = document.getElementById("landscapeButtonALP");
 
                 landscapeBtnALP.addEventListener("click", onClick_LandscapeButton);
             }
 
             function onClickButton(orientationMode)
             {
-                var orientationParagraph = document.getElementById("orientation-paragraph");
+                let orientationParagraph = document.getElementById("orientation-paragraph");
                 orientationParagraph.innerText = "Mode: " + orientationMode.target.innerText;
             }
 
             function onClick_LandscapeButton(event)
             {
-                var btn = event.target;
-                var orientationMode = btn.innerText;
+                let btn = event.target;
+                let orientationMode = btn.innerText;
                 setEventMode(orientationMode);
             }
 
             function onClick_PortraintButton(event)
             {
-                var btn = event.target;
-                var orientationMode = btn.innerText;
+                let btn = event.target;
+                let orientationMode = btn.innerText;
                 setEventMode(orientationMode);
             }
 
             function setEventMode(orientationMode)
             {
-                var orientationParagraph = document.getElementById("orientation-paragraph");
+                let orientationParagraph = document.getElementById("orientation-paragraph");
                 orientationParagraph.innerText = "Mode " + orientationMode;
             }
 
