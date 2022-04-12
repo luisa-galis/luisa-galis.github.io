@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="styles.css">
+        <title>Test Media Query Orientation</title>
+    </head>
+    <body>
+        <h1>Orientation with Media Query</h1>
+        <p id="orientation-paragraph" class="mode">
+            Mao Mao Micio
+        </p>
+
+        <script>
+            function main ()
+            {
+                // Create the query list.
+                const mediaQueryList = window.matchMedia("(orientation: portrait)");
+
+                var orientationPar = document.getElementById("orientation-paragraph");
+
+                // Define a callback function for the event listener.
+                function handleOrientationChange(mql) 
+                {
+                    orientationPar.innerText  = (mediaQueryList.matches) ? "Portrait": "Landscape";
+                    /* if (mediaQueryList.matches)
+                    {
+                        // The viewport is currently in portrait orientation
+                        orientationPar.innerText = "Portrait";
+                    } 
+                    else 
+                    {
+                        // The viewport is not currently in portrait orientation, 
+                        // therefore landscape
+                        orientationPar.innerText = "Landscape";
+                    } */
+                }
+
+                // Run the orientation change handler once.
+                handleOrientationChange(mediaQueryList);
+
+                // Add the callback function as a listener to the query list.
+                mediaQueryList.addEventListener('change', handleOrientationChange);
+            }
+
+            main();
+
+        </script>
+    </body>
+</html>
